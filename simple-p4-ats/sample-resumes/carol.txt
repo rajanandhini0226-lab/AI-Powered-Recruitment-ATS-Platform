@@ -1,0 +1,3 @@
+Carol Lee
+carol@example.com  +44 20 7946 0958
+Backend developer, 4 years experience. Python, Flask, MySQL, Docker, Git, Linux, REST.

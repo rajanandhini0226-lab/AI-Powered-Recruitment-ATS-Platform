@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Recruitment ATS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎯 AI Recruitment ATS</h1>
+    <nav id="nav">
+      <button data-tab="jobs" class="on">Jobs</button>
+      <button data-tab="candidates">Candidates</button>
+      <button data-tab="pipeline">Pipeline</button>
+      <button data-tab="interviews">Interviews</button>
+    </nav>
+    <select id="jobSelect"></select>
+  </header>
+
+  <div id="stats" class="stats"></div>
+
+  <!-- JOBS -->
+  <section id="jobs" class="tab">
+    <div class="grid2">
+      <form id="jobForm" class="card">
+        <h3>Create Job</h3>
+        <input id="jTitle" placeholder="Job title" required>
+        <textarea id="jDesc" rows="5" placeholder="Job description" required></textarea>
+        <input id="jSkills" placeholder="Required skills, comma separated (blank = auto-detect)">
+        <button class="primary">Create Job</button>
+      </form>
+      <div id="jobList"></div>
+    </div>
+  </section>
+
+  <!-- CANDIDATES -->
+  <section id="candidates" class="tab hidden">
+    <div class="card">
+      <h3>Add Resume</h3>
+      <input type="file" id="resumeFile" accept=".txt" multiple>
+      <p class="muted">or paste resume text:</p>
+      <textarea id="resumeText" rows="5" placeholder="Paste resume text here..."></textarea>
+      <button id="addResume" class="primary">Parse &amp; Score</button>
+    </div>
+    <table>
+      <thead><tr><th>#</th><th>Candidate</th><th>Match</th><th>Exp</th><th>Matched skills</th><th>Missing skills</th></tr></thead>
+      <tbody id="rankBody"></tbody>
+    </table>
+  </section>
+
+  <!-- PIPELINE -->
+  <section id="pipeline" class="tab hidden">
+    <p class="muted">Drag a card to move a candidate to another stage.</p>
+    <div id="kanban" class="kanban"></div>
+  </section>
+
+  <!-- INTERVIEWS -->
+  <section id="interviews" class="tab hidden">
+    <div class="grid2">
+      <form id="ivForm" class="card">
+        <h3>Schedule Interview</h3>
+        <select id="ivCand" required></select>
+        <input id="ivWho" placeholder="Interviewer name" required>
+        <input id="ivWhen" type="datetime-local" required>
+        <select id="ivDur"><option value="30">30 min</option><option value="45" selected>45 min</option><option value="60">60 min</option></select>
+        <button class="primary">Schedule</button>
+        <p id="ivMsg" class="err hidden"></p>
+      </form>
+      <div id="ivList"></div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
